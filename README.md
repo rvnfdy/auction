@@ -1,2 +1,5 @@
-*Schema Diagram
-![schemadiagram](resources/Schema\ Diagram)
+# Auction System
+
+## Schema Diagram
+
+![schemadiagram](resources/schema_diagram.jpg)
