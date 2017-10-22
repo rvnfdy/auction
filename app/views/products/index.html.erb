@@ -11,10 +11,15 @@
 		<tbody>
 				<% @products.each do |product| %>
 						<tr>
-								<td><%= product.name %></td>
+								<td><%= link_to product.name, product_path(product) %></td>
 								<td><%= product.user.username %></td>
 								<td><%= product.starting_price %></td>
+								<td><%= link_to 'Edit', edit_product_path(id: product.id) %></td>
+								<td><%= link_to 'Delete', product_path(id: product.id), method: :delete %></td>
+						
 						</tr>
 				<% end %>
 		</tbody>
 </table>
+<br>
+<a href="/products/new" class="button">New Product</a>
