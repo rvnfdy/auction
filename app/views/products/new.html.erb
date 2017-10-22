@@ -1,0 +1,11 @@
+<%= form_for @product do |f| %>
+		<p>
+		<%= f.label :name, 'Product Name' %>
+		<%= f.text_field :name %>
+		</p>
+		<p>
+		<%= f.label :starting_price %>
+		<%= f.text_field :starting_price %>
+		</p>
+		<%= f.submit 'Create' %>
+<% end %>

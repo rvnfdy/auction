@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925044848) do
+ActiveRecord::Schema.define(version: 20170926044736) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bids", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170925044848) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "starting_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,4 +41,7 @@ ActiveRecord::Schema.define(version: 20170925044848) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bids", "products"
+  add_foreign_key "bids", "users"
+  add_foreign_key "products", "users"
 end
