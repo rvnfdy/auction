@@ -1,3 +1,5 @@
+<h1>Hi, <%= session[:username] || 'guest!' %></h1>
+<%= link_to "Logout", logout_path, method: :delete %>
 <h1>List of Products</h1>
 
 <table>
@@ -22,4 +24,4 @@
 		</tbody>
 </table>
 <br>
-<a href="/products/new" class="button">New Product</a>
+<%= link_to "New Product", new_product_path %>
