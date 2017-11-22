@@ -3,25 +3,30 @@
 <h1>List of Products</h1>
 
 <table>
-		<thead>
-				<tr>
-						<th>Name</th>
-						<th>Owner</th>
-						<th>Starting Price</th>
-				</tr>
-		</thead>
-		<tbody>
-				<% @products.each do |product| %>
-						<tr>
-								<td><%= link_to product.name, product_path(product) %></td>
-								<td><%= product.user.username %></td>
-								<td><%= product.starting_price %></td>
-								<td><%= link_to 'Edit', edit_product_path(id: product.id) %></td>
-								<td><%= link_to 'Delete', product_path(id: product.id), method: :delete %></td>
-						
-						</tr>
-				<% end %>
-		</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Owner</th>
+      <th>Starting Price</th>
+      <th>Highest Bid</th>
+      <th>No. of Bidders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.user.username %></td>
+        <td><%= product.starting_price %></td>
+        <td><%= product.highest_bid%></td>
+        <td><%= product.number_of_bidders %></td>
+        <td><%= link_to 'Edit', edit_product_path(id: product.id) %></td>
+        <td><%= link_to 'Delete', product_path(id: product.id), method: :delete %></td>
+        <td><%= link_to 'Bid', new_product_bid_path(product_id: product.id) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 <br>
 <%= link_to "New Product", new_product_path %>

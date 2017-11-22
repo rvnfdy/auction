@@ -1,0 +1,8 @@
+<h1>Bid for <%= @product.user.username %>'s <%= @product.name %></h1>
+<%= form_for @bid, url: product_bids_path do |f| %>
+		<p>
+		<%= f.label :price %>
+		<%= f.text_field :price %>
+		</p>
+		<%= f.submit 'Bid' %>
+<% end %>

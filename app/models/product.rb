@@ -23,4 +23,13 @@
 
 class Product < ApplicationRecord
   belongs_to :user
+  has_many :bids
+
+  def number_of_bidders
+    bids.count
+  end
+
+  def highest_bid
+    bids.map { |i | i.price }.max || '-'
+  end
 end

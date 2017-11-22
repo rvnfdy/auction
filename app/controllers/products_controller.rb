@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+ #frozen_string_literal: true
 
 class ProductsController < ApplicationController
   def index
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    product.user_id = 1
+    product.user = current_user
     if product.save
       redirect_to products_path
     else
@@ -43,6 +43,6 @@ class ProductsController < ApplicationController
   end
 
   private def product_params
-    params.require(:product).permit(:name, :owner, :starting_price)
+    params.require(:product).permit(:name, :starting_price)
   end
 end
